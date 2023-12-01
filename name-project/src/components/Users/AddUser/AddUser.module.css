@@ -1,0 +1,29 @@
+.user label{
+  font-size: large;
+  font-weight: bolder;
+
+}
+
+.user input{
+  width: 100%;
+  padding: 4px 0;
+  margin: 8px 0;
+  box-sizing: border-box;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.user input:focus{
+  border: 1px solid yellow;
+}
+
+
+/* input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px; */
