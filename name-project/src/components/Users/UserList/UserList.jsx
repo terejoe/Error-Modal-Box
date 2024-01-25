@@ -1,17 +1,17 @@
-import React from 'react'
-import Card from '../../UI/Card/Card'
-import UserItem from '../UserItem/UserItem'
+import React from 'react';
+import UserItem from '../UserItem/UserItem';
+import styles from './UserList.module.css'
 
 export default function UserList(props) {
   return (
-    <Card>
-      <ul>
-        {props.users.map((user) => (
-          // <div>{user.name}</div>
-          <UserItem name={user.name} age={user.age}/>
-        ))}
-      </ul>
-    </Card>
+
+    <ul>
+      {props.users.map((user) => (
+        // <div>{user.name}</div>
+        <UserItem key={user.id} name={user.name} age={user.age}/>
+      ))}
+    </ul>
+      
    
   )
 }

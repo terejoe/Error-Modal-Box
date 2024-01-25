@@ -6,7 +6,7 @@
 
 .user input{
   width: 100%;
-  padding: 4px 0;
+  padding: 4px 2px;
   margin: 8px 0;
   box-sizing: border-box;
   display: inline-block;
@@ -17,13 +17,3 @@
 .user input:focus{
   border: 1px solid yellow;
 }
-
-
-/* input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px; */
