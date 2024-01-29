@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef} from 'react';
 import Button from '../../UI/Button/Button';
 import Card from '../../UI/Card/Card';
 import ModalBox from '../../UI/ModalBox/ModalBox';
@@ -7,24 +7,17 @@ import styles from "./AddUser.module.css";
 
 
 export default function AddUser(props) {
-  const [enteredName, setEnteredName] = useState("")
-  const [enteredAge, setEnteredAge] = useState("")
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
   const [modal, setModal] = useState();
 
 
-  const handleNameChange = (event) =>{
-    setEnteredName(event.target.value) 
-  };
-  console.log(enteredName)
   
-  const handleAgeChange = (event) =>{
-    setEnteredAge(event.target.value) 
-  };
-  console.log(enteredAge)
- 
-
   const submitHandler = (event) =>{
     event.preventDefault();
+    const enteredName = nameInputRef.current.value;
+    const enteredAge = ageInputRef.current.value;
     if(enteredName.trim().length === 0 || enteredAge.trim().length === 0){
       setModal({
         title: 'Invalid Input',
@@ -46,10 +39,10 @@ export default function AddUser(props) {
       name: enteredName,
       age: enteredAge
     };
-    console.log(DataObject)
+   
     props.onAddData(enteredName, enteredAge);
-    setEnteredName("");
-    setEnteredAge(""); 
+    nameInputRef.current.value = '';
+    ageInputRef.current.value = '';
   }
 
   const modalHandler = () => {
@@ -63,17 +56,15 @@ export default function AddUser(props) {
         <form onSubmit={submitHandler}>
           <div className={styles.user}>
             <label htmlFor='username'>Username</label>
-            <input type="text" value={enteredName} onChange={handleNameChange} />
+            <input type="text" ref={nameInputRef}/>
           </div>
 
           <div className={styles.user}>
             <label htmlFor='age'>Age (Years)</label>
-            <input type="number" value={enteredAge} onChange={handleAgeChange}/>
+            <input type="number" ref={ageInputRef}/>
           </div>
-
-          {/* <Button onClick={() => setIsOpen(true)}>Add User</Button> */}
           <Button onClick={submitHandler}>Add User</Button>
-          {/* {isOpen && <ModalBox setIsOpen={setIsOpen}/>} */}
+
         </form>
       </Card>
     </div>
